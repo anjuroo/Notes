@@ -1,4 +1,3 @@
-Jarred Saludaga
 class Menu:
     def __init__(self, choice):
         self.menu_items = {
