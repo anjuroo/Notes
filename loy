@@ -1,9 +1,10 @@
+Jarred Saludaga
 class Menu:
     def __init__(self, choice):
         self.menu_items = {
-            1: {"name": "Pinakbet na Pinasarap", "bill": 900},
-            2: {"name": "Scallop", "bill": 490},
-            3: {"name": "Lechon Kawali", "bill": 590}
+            1: {"name": "Chicken na Pinakurat", "bill": 900},
+            2: {"name": "Inihaw na Manok", "bill": 490},
+            3: {"name": "Pinakbet", "bill": 590}
         }
         self.choice = choice
         self.order_name = ""
@@ -16,14 +17,15 @@ class Menu:
             3: "Pinakbet"
         }
         self.order_name = ListFood.get(self.choice, "Invalid Choice!")
-
-    def get_bill(self):
-        self.order_bill = self.menu_items[self.choice]["bill"]
+        if self.order_name == "Invalid Choice!":
+            self.order_bill = 0
+        else:
+            self.order_bill = self.menu_items[self.choice]["bill"]
 
     def display(self):
         print(f"Order for table number {self.choice} is {self.order_name}.\n")
         print(f"Bill is Php{self.order_bill}.00")
-        print("Thank you for Dining!\nCome Again!")
+        print("Thank you for dining!\nCome again!")
 
 
 class TestMenu:
@@ -33,10 +35,9 @@ class TestMenu:
         print("2. Inihaw na Manok      = Php490")
         print("3. Pinakbet             = Php590\n")
 
-        choice = int(input(""))
+        choice = int(input("Enter your choice: "))
         menu = Menu(choice)
         menu.get_order()
-        menu.get_bill()
         menu.display()
 
 
